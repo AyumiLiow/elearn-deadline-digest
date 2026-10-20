@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sunday Deadline Digest · PS5</title>
+<style>
+  :root{--ink:#1f2a44;--muted:#5b6475;--line:#d9dee8;--bg:#fbfaf7;--card:#fff;--purple:#5b3f8f;--blue:#3a7ca5;--red:#b3262f;--teal:#1d5c63}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  main{max-width:860px;margin:0 auto;padding:32px 16px 64px}
+  h1{font-size:2rem;margin:0 0 4px}
+  h2{color:var(--teal);margin:48px 0 12px;font-size:1.4rem;border-bottom:1px solid var(--line);padding-bottom:6px}
+  h3{margin:20px 0 6px;font-size:1.05rem}
+  .sub{color:var(--muted);margin:0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+  .agentcard p{margin:6px 0}
+  .agentcard .head{font-weight:700;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:10px}
+  /* map */
+  .map{display:grid;grid-template-columns:150px 1fr 1fr;gap:10px}
+  .hdr{background:var(--ink);color:#fff;border-radius:8px;padding:10px;text-align:center;font-weight:700;font-size:.9rem}
+  .row{background:#eef1f6;border-radius:8px;padding:10px;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:700;font-size:.85rem}
+  .q{border:1px solid var(--line);border-radius:8px;padding:14px;text-align:center;background:#fff;cursor:pointer;position:relative}
+  .q b{display:block;color:var(--purple);font-family:Georgia,serif;font-size:1.05rem}
+  .q span{font-size:.85rem;color:var(--muted)}
+  .q.on{border:3px solid var(--red)}
+  .q.on::after{content:"★ Sunday Deadline Digest";position:absolute;left:50%;bottom:-12px;transform:translateX(-50%);background:var(--red);color:#fff;font-size:.72rem;padding:2px 8px;border-radius:10px;white-space:nowrap}
+  .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px}
+  figure img{width:100%;border-radius:4px;display:block}
+  figcaption{font-size:.85rem;color:var(--muted);margin-top:6px}
+  table{border-collapse:collapse;width:100%;font-size:.92rem}
+  td,th{border:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+  th{background:#eef1f6}
+  footer{margin-top:48px;color:var(--muted);font-size:.85rem}
+  @media (max-width:600px){.map{grid-template-columns:90px 1fr 1fr}.row,.hdr{font-size:.72rem}}
+</style>
+</head>
+<body>
+<main>
+  <h1>Sunday Deadline Digest</h1>
+  <p class="sub">MGMT 6110 · Problem Set 5 · Ayumi Liow · Built on Zapier's free plan</p>
+
+  <h2>1 · My agent card</h2>
+  <div class="card agentcard">
+    <p class="head">My agent card | Sunday Deadline Digest | finished 20 Oct 2026, 9:06 AM SGT</p>
+    <p><b>1. The job:</b> Sends me, a full-time MBAI student taking four modules (MGMT6110, OPIM639, ACCT689, MKTG644), one email listing the coming week's eLearn submission deadlines.</p>
+    <p><b>2. The trigger:</b> Schedule by Zapier, every Sunday at 9:00 AM (Asia/Singapore). It ran hourly during testing.</p>
+    <p><b>3. The tools:</b> Google Calendar (personal account, subscribed to my eLearn calendar feed) to Find Events from now to +7 days. Gmail (personal account) to Send Email to me only.</p>
+    <p><b>4. It must never:</b> email anyone but me. The Gmail "To" field is typed in as my own address, not mapped, and CC/BCC are blank.</p>
+    <p><b>5. Where a person checks:</b> I read the email every Sunday morning and check it against the eLearn calendar, using the link in the email, before planning my week.</p>
+  </div>
+
+  <h2>2 · Runs, tricky case and fix</h2>
+  <div class="shots">
+    <figure><img src="screenshots/run1.png" alt="Run 1 email and Zap history"><figcaption>Run 1: email next to its Zap history record</figcaption></figure>
+    <figure><img src="screenshots/run2.png" alt="Run 2 email and Zap history"><figcaption>Run 2</figcaption></figure>
+    <figure><img src="screenshots/run3.png" alt="Run 3 email and Zap history"><figcaption>Run 3</figcaption></figure>
+  </div>
+  <h3>Tricky case</h3>
+  <p><b>Expected:</b> a week with two deadlines (20 Oct and 26 Oct) shows both in the email.<br>
+     <b>Got:</b> only the first one, Problem Set 5. Zapier's free Find Events step returns only the first matching event.</p>
+  <div class="shots">
+    <figure><img src="screenshots/tricky-calendar.png" alt="Google Calendar showing two deadlines"><figcaption>Google Calendar: 2 deadlines in the next 7 days</figcaption></figure>
+    <figure><img src="screenshots/tricky-email.png" alt="Email showing one deadline"><figcaption>The email shows only 1</figcaption></figure>
+  </div>
+  <h3>Fix, tested again</h3>
+  <p>I added a warning and a link to the eLearn calendar in the email body, so a missed deadline is always one click away. I reran the Zap and confirmed that the link opens eLearn.</p>
+  <div class="shots">
+    <figure><img src="screenshots/fix-email.png" alt="Email with eLearn calendar link"><figcaption>Rerun after the fix</figcaption></figure>
+  </div>
+
+  <h2>3 · On the map</h2>
+  <div class="map" id="map">
+    <div></div>
+    <div class="hdr">Work with a right answer</div>
+    <div class="hdr">Work with no single right answer</div>
+    <div class="row">People and AI must do it together</div>
+    <div class="q" data-q="A person leads, AI inside"><b>A person leads, AI inside</b><span>The person leads and AI works inside.</span></div>
+    <div class="q" data-q="Agents run it, a person judges"><b>Agents run it, a person judges</b><span>Agents run the process and a person judges inside it.</span></div>
+    <div class="row">Either of them can do it alone</div>
+    <div class="q on" data-q="AI alone, with checks"><b>AI alone, with checks</b><span>AI does it, with spot checks.</span></div>
+    <div class="q" data-q="A person decides, AI alongside"><b>A person decides, AI alongside</b><span>A person decides with AI alongside.</span></div>
+  </div>
+  <p class="sub" style="margin-top:20px">My placement: <b>AI alone, with checks</b> (bottom left).</p>
+
+  <h2>4 · Q1: Where my agent sits</h2>
+  <p><b>(a) Quadrant.</b> AI alone, with checks (bottom left).</p>
+  <p><b>(b) The two questions.</b> <i>Is it work with a right answer?</i> Yes. A deadline is a fact that can be checked against eLearn. My tricky case proves it: the Zap listed one deadline when my calendar showed two, and I could only call that an error because a right answer exists. <i>Must people and AI do it together?</i> No. I could copy the dates by hand, and the Zap does it with no input from me. Each run in Zap history goes from trigger to Find Events to Gmail with no human step.</p>
+  <p><b>(c) The person in the loop.</b> I'm not a gate before sending. I'm the spot-checker afterwards. Every Sunday morning I compare the email with the eLearn calendar before planning my week. The agent may read my calendar and email me alone. It must never email anyone else. If it began prioritising my work or planning my week, there would be no single right answer, and it would move to <i>A person decides, AI alongside</i>. If it submitted assignments for me, I would have to approve each one, which would move it to <i>A person leads, AI inside</i>.</p>
+  <p><b>(d) My group's view.</b> (tbc)</p>
+
+  <h2>5 · Collaboration log</h2>
+  <table>
+    <tr><th>Delegated to AI</th><td>I used Claude to draft the agent card, guide the Zapier setup step by step, and draft Q1 and this page.</td></tr>
+    <tr><th>What I checked, and how</th><td>Each email against Google Calendar, its Zap history record and the eLearn calendar.</td></tr>
+    <tr><th>One AI error I caught</th><td>The Zap's Find Events step returned only 1 of 2 deadlines. While building, extra data (<code>Object.to_json(Raw Output)</code>) also got mapped into a date field by mistake, and I removed it.</td></tr>
+    <tr><th>Time and cost</th><td>About 1 hour · $0 (Zapier free plan, free Google apps)</td></tr>
+  </table>
+
+  <h2>6 · Reflection</h2>
+  <p>The agent fitted the job of turning eLearn deadlines into one weekly email to my personal email. It failed when two deadlines fell in the same week, because Zapier's free Find Events step returns only the first match, so I fixed it by adding a disclaimer to the email: "⚠️ Shows the next deadline only. Check the full week here:" followed by a link to my eLearn calendar. Ideally, however, I would change it to a multi-result search, or to one reminder per deadline, so the email is complete rather than pointing me back to eLearn.</p>
+
+  <footer>No email addresses, keys or calendar tokens are shown on this page. The Zap is switched off after the Week 8 class.</footer>
+</main>
+<script>
+  document.querySelectorAll('#map .q').forEach(function(q){
+    q.addEventListener('click',function(){
+      document.querySelectorAll('#map .q').forEach(function(x){x.classList.remove('on')});
+      q.classList.add('on');
+    });
+  });
+</script>
+</body>
+</html>
